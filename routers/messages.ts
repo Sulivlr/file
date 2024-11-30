@@ -15,8 +15,17 @@ messagesRouter.post('/', (req, res) => {
   res.json(messages);
 });
 messagesRouter.get('/', (req, res) => {
-  if (req.body.message && req.body.dateTime >= 5) {
-    res.json(messages);
-  }
+  res.json(messages);
 });
+
+// messagesRouter.get('/', (req, res) => {
+//   try {
+//     const filteredMessages = messages.sort((firstMessage, secondMessage) => Date.parse(secondMessage.dateTime) - Date.parse(firstMessage.dateTime));
+//     const latestMessages = filteredMessages.slice(0, 5);
+//     res.json(latestMessages);
+//   } catch (error) {
+//     console.error('error occurred', error);
+//   }
+// });
+
 export default messagesRouter;
