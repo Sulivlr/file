@@ -12,9 +12,11 @@ messagesRouter.post('/', (req, res) => {
     message: req.body.message,
     dateTime: date.toISOString(),
   });
-  res.send('Message sent!')
+  res.json(messages);
 });
 messagesRouter.get('/', (req, res) => {
-  res.json(messages);
+  if (req.body.message && req.body.dateTime >= 5) {
+    res.json(messages);
+  }
 });
 export default messagesRouter;
